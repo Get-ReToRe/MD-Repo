@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Capstone Project/app/src/main/res/drawable-v24/border.xml" value="0.178" />
+        <entry key="..\:/Capstone Project/app/src/main/res/drawable-v24/ic_lock.xml" value="0.178" />
+        <entry key="..\:/Capstone Project/app/src/main/res/drawable-v24/ic_logout.xml" value="0.132" />
+        <entry key="..\:/Capstone Project/app/src/main/res/drawable-v24/tv_default.xml" value="0.178" />
+        <entry key="..\:/Capstone Project/app/src/main/res/drawable-v24/tv_error.xml" value="0.178" />
+        <entry key="..\:/Capstone Project/app/src/main/res/drawable/ic_email.xml" value="0.132" />
+        <entry key="..\:/Capstone Project/app/src/main/res/layout/activity_detail.xml" value="0.3484375" />
+        <entry key="..\:/Capstone Project/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Capstone Project/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Capstone Project/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Capstone Project/app/src/main/res/layout/activity_rekomendasi.xml" value="0.3484375" />
+        <entry key="..\:/Capstone Project/app/src/main/res/layout/card_travel.xml" value="0.2" />
+        <entry key="..\:/Capstone Project/app/src/main/res/menu/menu.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

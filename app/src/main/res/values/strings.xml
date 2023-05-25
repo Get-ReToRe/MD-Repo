@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">GetReToRe</string>
+
+    <string name="title_login">Login Form</string>
+    <string name="email">Email</string>
+    <string name="error_email">Masukkan email yang benar!</string>
+    <string name="password">Kata Sandi</string>
+    <string name="error_password">"Password terlalu pendek"</string>
+    <string name="login">Masuk</string>
+    <string name="message_login">Masukkan dulu datamu</string>
+
+    <string name="title_register">Register Form</string>
+    <string name="register">Daftar</string>
+    <string name="name">Nama</string>
+
+    <string name="title">Nama Tempat</string>
+    <string name="price">Rp.30.000</string>
+
+    <string name="logout">Logout</string>
+    <string name="budget">Recomendation</string>
+</resources>

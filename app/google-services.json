@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1050597914271",
+    "project_id": "get-retore",
+    "storage_bucket": "get-retore.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050597914271:android:f3580a9b91477e1c1414aa",
+        "android_client_info": {
+          "package_name": "com.capstone.getretore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050597914271-c94kpr8pj4pjfdstr9vuh6adi2s7elod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.getretore",
+            "certificate_hash": "2a9835dee220be4b8fcfbf7deff6bc5cba31192a"
+          }
+        },
+        {
+          "client_id": "1050597914271-rvo4s0tal4fvovevu7j8jr3mhbou9pu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJXgMsVudRwkqUsfaoC7QHDxWtiZHYIc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050597914271-rvo4s0tal4fvovevu7j8jr3mhbou9pu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
