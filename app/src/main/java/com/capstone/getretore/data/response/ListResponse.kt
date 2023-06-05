@@ -1,7 +1,8 @@
 package com.capstone.getretore.data.response
 
-import androidx.room.Entity
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 data class ListResponse(
 
@@ -15,7 +16,7 @@ data class ListResponse(
 	val message: String
 )
 
-@Entity(tableName = "places")
+@Parcelize
 data class DataItem(
 
 	@field:SerializedName("Description")
@@ -50,4 +51,4 @@ data class DataItem(
 
 	@field:SerializedName("Lat")
 	val lat: Int
-)
+): Parcelable

@@ -15,6 +15,7 @@
 
     <string name="title">Nama Tempat</string>
     <string name="price">Rp.30.000</string>
+    <string name="description">Lorem ipsum dolor sit amet</string>
 
     <string name="logout">Logout</string>
     <string name="budget">Recomendation</string>
