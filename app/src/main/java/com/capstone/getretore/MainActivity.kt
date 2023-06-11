@@ -6,12 +6,20 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.capstone.getretore.adapter.PlaceAdapter
 import com.capstone.getretore.data.retrofit.ApiConfig
 import com.capstone.getretore.databinding.ActivityMainBinding
+import com.capstone.getretore.ui.DetailActivity
 import com.capstone.getretore.ui.LoginActivity
-import com.capstone.getretore.ui.RecomenActivity
 import com.capstone.getretore.user.PlaceData
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import retrofit2.Call
@@ -21,52 +29,30 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: PlaceAdapter
-    private var addClicked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = PlaceAdapter(this@MainActivity, arrayListOf())
+        val bottomNavigationView = binding.bottomNavigationView
+        val navController = findNavController(R.id.fragment)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home,
+                R.id.navigation_budget,
+                R.id.navigation_upload
+            )
+        )
 
-        binding.rvMain.adapter = adapter
-        binding.rvMain.setHasFixedSize(true)
-
-        remoteGetPlace()
-
-        binding.btnBudget.setOnClickListener {
-            addClicked = true
-            startActivity(Intent(this, RecomenActivity::class.java))
-        }
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        bottomNavigationView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
+        menuInflater.inflate(R.menu.logout, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-    fun remoteGetPlace(){
-        ApiConfig.getApiService().getPlaces().enqueue(object : Callback<ArrayList<PlaceData>> {
-            override fun onResponse(
-                call: Call<ArrayList<PlaceData>>,
-                response: Response<ArrayList<PlaceData>>
-            ) {
-                if(response.isSuccessful){
-                    val data = response.body()
-                    setDataToAdapter(data!!)
-                }
-            }
-
-            override fun onFailure(call: Call<ArrayList<PlaceData>>, t: Throwable) {
-                Log.d("Error", ""+ t.stackTraceToString())
-            }
-        })
-    }
-
-    fun setDataToAdapter(data: ArrayList<PlaceData>){
-        adapter.setData(data)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

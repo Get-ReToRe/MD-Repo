@@ -4,20 +4,17 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-data class ListResponse(
+data class PlaceResponse(
 
-	@field:SerializedName("data")
-	val data: List<DataItem>,
-
-	@field:SerializedName("success")
-	val success: Boolean,
-
-	@field:SerializedName("message")
-	val message: String
+	@field:SerializedName("PlaceResponse")
+	val placeResponse: List<PlaceResponseItem>
 )
 
 @Parcelize
-data class DataItem(
+data class PlaceResponseItem(
+
+	@field:SerializedName("Time_Minutes")
+	val timeMinutes: Int,
 
 	@field:SerializedName("Description")
 	val description: String,

@@ -3,9 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/btn_logout"
-        android:icon="@drawable/ic_logout"
-        android:title="@string/logout"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_main"
+        android:title="@string/title_main" />
+
+    <item
+        android:id="@+id/navigation_budget"
+        android:icon="@drawable/ic_wallet"
+        android:title="@string/budget" />
+
+    <item
+        android:id="@+id/navigation_upload"
+        android:icon="@drawable/ic_upload"
+        android:title="@string/title_upload" />
 
 </menu>
