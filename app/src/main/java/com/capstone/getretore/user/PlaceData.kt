@@ -9,5 +9,6 @@ data class PlaceData(
     val Place_Name: String,
     val Price: Int,
     val Image: String,
-    val Description: String
+    val Description: String,
+    val City: String
 ) :Parcelable

@@ -13,6 +13,11 @@
         android:title="@string/budget" />
 
     <item
+        android:id="@+id/navigation_package"
+        android:icon="@drawable/ic_package"
+        android:title="@string/paket" />
+
+    <item
         android:id="@+id/navigation_upload"
         android:icon="@drawable/ic_upload"
         android:title="@string/title_upload" />

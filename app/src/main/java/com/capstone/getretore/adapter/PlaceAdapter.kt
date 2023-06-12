@@ -41,6 +41,7 @@ class PlaceAdapter(
         val tvName = view.findViewById<TextView>(R.id.tv_name)
         val tvPrice = view.findViewById<TextView>(R.id.tv_price)
         val ivImage = view.findViewById<ImageView>(R.id.iv_image)
+        val tvCity = view.findViewById<TextView>(R.id.tv_city)
         val rvMain = view.findViewById<RecyclerView>(R.id.rv_main)
         val cvMain = view.findViewById<CardView>(R.id.cv_main)
     }
@@ -64,6 +65,7 @@ class PlaceAdapter(
                             itemView.context as Activity,
                             Pair(ivImage, "place"),
                             Pair(tvName, "name"),
+                            Pair(tvCity, "city"),
                             Pair(tvPrice, "price")
                         )
                     itemView.context.startActivity(intent, optionsCompat.toBundle())
@@ -86,6 +88,7 @@ class PlaceAdapter(
 //        }
 
         holder.tvName.text = placeList.get(position).Place_Name
+        holder.tvCity.text = placeList.get(position).City
         holder.tvPrice.text = "Rp." + placeList.get(position).Price.toString()
         Glide.with(context)
             .load(place.Image)

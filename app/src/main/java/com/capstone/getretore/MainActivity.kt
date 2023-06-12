@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_home,
                 R.id.navigation_budget,
-                R.id.navigation_upload
+                R.id.navigation_upload,
+                R.id.navigation_package
             )
         )
 

@@ -20,6 +20,10 @@
     <string name="logout">Logout</string>
     <string name="budget">Budget</string>
 
+    <string name="title_package">Paket</string>
+    <string name="paket">Paket</string>
+
+
     <string name="title_main">Main</string>
     <string name="title_budget">Budget</string>
     <string name="title_upload">Upload</string>
