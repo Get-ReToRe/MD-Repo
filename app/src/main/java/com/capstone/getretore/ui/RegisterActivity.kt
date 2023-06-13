@@ -57,15 +57,16 @@ class RegisterActivity : AppCompatActivity() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 Log.d(TAG, "User profile updated.")
+                                Toast.makeText(
+                                    baseContext,
+                                    "Berhasil Daftar.",
+                                    Toast.LENGTH_SHORT,
+                                ).show()
+                                startActivity(Intent(this, LoginActivity::class.java))
                             }
                         }
 
-                    Toast.makeText(
-                        baseContext,
-                        "Berhasil Daftar.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    startActivity(Intent(this, LoginActivity::class.java))
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)

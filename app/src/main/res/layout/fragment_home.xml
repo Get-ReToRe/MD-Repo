@@ -10,15 +10,18 @@
         android:id="@+id/tvSelamatDatang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:layout_marginLeft="18dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:text="Selamat Datang" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="36dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/card_travel" />
 
