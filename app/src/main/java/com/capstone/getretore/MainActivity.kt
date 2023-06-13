@@ -20,6 +20,7 @@ import com.capstone.getretore.ui.DetailActivity
 import com.capstone.getretore.ui.LoginActivity
 import com.capstone.getretore.user.PlaceData
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import retrofit2.Call
@@ -27,12 +28,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        auth = Firebase.auth
+        val user = auth.currentUser;
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

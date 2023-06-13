@@ -16,6 +16,7 @@ import com.capstone.getretore.databinding.FragmentHomeBinding
 import com.capstone.getretore.ui.DetailActivity
 import com.capstone.getretore.ui.LoginActivity
 import com.capstone.getretore.user.PlaceData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import retrofit2.Call
@@ -23,6 +24,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeFragment : Fragment() {
+    private lateinit var firebase: Firebase
     private var _binding: FragmentHomeBinding? = null
     private lateinit var adapter: PlaceAdapter
 
@@ -46,6 +48,9 @@ class HomeFragment : Fragment() {
 
         binding.rvMain.adapter = adapter
         binding.rvMain.setHasFixedSize(true)
+
+        var auth = Firebase.auth
+        binding.tvSelamatDatang.setText("Selamat Datang, " + auth.currentUser!!.displayName.toString() )
 
         remoteGetPlace()
 

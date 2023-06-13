@@ -12,6 +12,7 @@ import com.capstone.getretore.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 import kotlin.math.log
 
@@ -25,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnRegister.setOnClickListener {
-            register(email = binding.edtEmail.text.toString(), password = binding.edtPassword.text.toString())
+            register(email = binding.edtEmail.text.toString(), password = binding.edtPassword.text.toString(), username = binding.edtUsername.text.toString())
         }
 
         auth = Firebase.auth
@@ -42,13 +43,23 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun register(email:String, password:String){
+    private fun register(email:String, password:String, username:String){
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
+                    val profileUpdates = userProfileChangeRequest {
+                        displayName = username
+                    }
+                    user!!.updateProfile(profileUpdates)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d(TAG, "User profile updated.")
+                            }
+                        }
+
                     Toast.makeText(
                         baseContext,
                         "Berhasil Daftar.",
