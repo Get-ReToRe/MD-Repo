@@ -34,4 +34,14 @@
     <string name="input">Tuliskan dana Anda</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="category_wisata">
+        <item>Category</item>
+        <item>Bahari</item>
+        <item>Budaya</item>
+        <item>Cagar Alam</item>
+        <item>Pusat Perbelanjaan</item>
+        <item>Taman Hiburan</item>
+        <item>Tempat Ibadah</item>
+    </string-array>
 </resources>

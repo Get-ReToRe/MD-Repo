@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
                 if(response.isSuccessful){
                     val data = response.body()
                     setDataToAdapter(data!!)
+
                     placeAdapter.setOnItemClickCallback(object : PlaceAdapter.OnItemClickCallback {
                         override fun onItemClicked(data: PlaceData) {
                             val intent = Intent(requireContext(), DetailActivity::class.java)
@@ -76,6 +77,8 @@ class HomeFragment : Fragment() {
                             intent.putExtra("PRICE", data.Price)
                             intent.putExtra("DESCRIPTION", data.Description)
                             intent.putExtra("IMAGE", data.Image)
+                            Log.d("DetailNAME", data.Place_Name.toString())
+                            Log.d("DetailImage", data.Image.toString())
                             startActivity(intent)
                         }
                     })

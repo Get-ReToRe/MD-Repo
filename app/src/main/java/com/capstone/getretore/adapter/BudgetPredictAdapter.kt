@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Parcelable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,12 +20,13 @@ import com.capstone.getretore.data.response.PlaceResponseItem
 import com.capstone.getretore.databinding.CardTravelBinding
 import com.capstone.getretore.ui.DetailActivity
 import com.capstone.getretore.ui.DetailActivity.Companion.EXTRA_DATA
+import com.capstone.getretore.user.BudgetPredictData
 import com.capstone.getretore.user.PlaceData
 
-class PlaceAdapter(
+class BudgetPredictAdapter(
     private val context: Context,
-    private val placeList: ArrayList<PlaceData>
-) : RecyclerView.Adapter<PlaceAdapter.MyViewHolder>() {
+    private val placeList: ArrayList<BudgetPredictData>
+) : RecyclerView.Adapter<BudgetPredictAdapter.MyViewHolder>() {
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
@@ -60,7 +60,7 @@ class PlaceAdapter(
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
                     intent.putExtra(EXTRA_DATA, place)
-                    Log.d("Extra", place.toString())
+
                     val optionsCompat: ActivityOptionsCompat =
                         ActivityOptionsCompat.makeSceneTransitionAnimation(
                             itemView.context as Activity,
@@ -89,7 +89,7 @@ class PlaceAdapter(
 //        }
 
         holder.tvName.text = placeList.get(position).Place_Name
-        holder.tvCity.text = placeList.get(position).City
+        holder.tvCity.text = placeList.get(position).City + "\n( ${placeList.get(position).Distance} KM) "
         holder.tvPrice.text = "Rp." + placeList.get(position).Price.toString()
         Glide.with(context)
             .load(place.Image)
@@ -105,13 +105,13 @@ class PlaceAdapter(
 
     override fun getItemCount(): Int = placeList.size
 
-    fun setData(data: ArrayList<PlaceData>) {
+    fun setData(data: ArrayList<BudgetPredictData>) {
         placeList.clear()
         placeList.addAll(data)
         notifyDataSetChanged()
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: PlaceData)
+        fun onItemClicked(data: BudgetPredictData)
     }
 }

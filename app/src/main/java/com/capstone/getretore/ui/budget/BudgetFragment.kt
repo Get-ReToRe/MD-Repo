@@ -1,11 +1,29 @@
 package com.capstone.getretore.ui.budget
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
 import com.capstone.getretore.R
+import com.capstone.getretore.adapter.BudgetPredictAdapter
+import com.capstone.getretore.adapter.PlaceAdapter
+import com.capstone.getretore.data.retrofit.ApiConfig
+import com.capstone.getretore.databinding.FragmentBudgetBinding
+import com.capstone.getretore.databinding.FragmentHomeBinding
+import com.capstone.getretore.user.BudgetPredictData
+import com.capstone.getretore.user.PlaceData
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +39,13 @@ class BudgetFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private var _binding: FragmentBudgetBinding? = null
+    private lateinit var adapter: BudgetPredictAdapter
+    private var budget: Int = 0
+    private var category: String = ""
+    private var lat: Double = -7.7829
+    private var long: Double = 110.3671
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +59,68 @@ class BudgetFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_budget, container, false)
+        _binding = FragmentBudgetBinding.inflate(inflater, container, false)
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.category_wisata,
+            android.R.layout.simple_spinner_item
+        ).also { adapters ->
+            adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerCategory.adapter = adapters
+        }
+
+        adapter = BudgetPredictAdapter(requireContext(), arrayListOf())
+        binding.rvPredict.adapter = adapter
+
+
+        binding.btnBudgetRecommendation.setOnClickListener { getRecommendation() }
+        val root: View = binding.root
+        return root
+    }
+
+    fun setDataToAdapter(data: ArrayList<BudgetPredictData>){
+        adapter.setData(data)
+    }
+
+    private fun getRecommendation(){
+        var inputBudget = binding.etBudget.text.toString();
+        var inputCategory = binding.spinnerCategory.selectedItem.toString();
+        if(inputBudget == ""){
+            Toast.makeText(context, "Tambahkan Budget Dulu !", Toast.LENGTH_SHORT).show()
+        }else if (inputCategory == "Category"){
+            Toast.makeText(context, "Pilih Category Dulu !", Toast.LENGTH_SHORT).show()
+        }else{
+            budget = inputBudget.toInt()
+            category = inputCategory;
+            Log.d("BUDGET", "budget : $budget ,category : $category")
+            val jsonObject = JSONObject()
+            jsonObject.put("budget", budget);
+            jsonObject.put("category", category);
+            jsonObject.put("lat",lat);
+            jsonObject.put("lon", long);
+            val jsonObjectString = jsonObject.toString()
+            val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+            ApiConfig.getApiService().getRecommendation(requestBody).enqueue(object :
+                Callback<ArrayList<BudgetPredictData>>{
+                override fun onResponse(
+                    call: Call<ArrayList<BudgetPredictData>>,
+                    response: Response<ArrayList<BudgetPredictData>>
+                ) {
+                    if(response.isSuccessful){
+                        val data = response.body()
+                        Log.d("response", "result ${data}" )
+                        setDataToAdapter(data!!)
+                    }
+                }
+
+                override fun onFailure(call: Call<ArrayList<BudgetPredictData>>, t: Throwable) {
+                    Log.d("Error", ""+ t.stackTraceToString())
+                    Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
+                }
+
+            })
+        }
+
     }
 
     companion object {

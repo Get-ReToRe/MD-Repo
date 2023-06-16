@@ -23,28 +23,32 @@ import retrofit2.Response
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-    private lateinit var detailViewModel: DetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_detail)
 
-//        setDetail()
+        val data = intent.getParcelableExtra<PlaceResponseItem>(EXTRA_DATA) as PlaceResponseItem
+        binding.apply {
+            tvName.text = data.placeName
+            tvPrice.text = "Rp. ${data.price.toString()}"
+            tvDescription.text = data.description
+            Glide.with(this@DetailActivity)
+                .load(data.image)
+                .fitCenter()
+                .into(ivPlace)
+        }
 
-        detailViewModel.detail.observe(this, {
-            setDetail(it)
-        })
-
-        detailViewModel.detailPlace()
     }
 
-    private fun setDetail(data: PlaceData) {
+    private fun setDetail() {
         val name = intent.getStringExtra("NAME")
         val price = intent.getStringExtra("PRICE")
         val description = intent.getStringExtra("DESCRIPTION")
         val image = intent.getStringExtra("IMAGE")
-
+        Log.d("DetailNAME", name.toString())
+        Log.d("DetailImage", image.toString())
 //        val bundle: Bundle? = intent.extras
 //        val tvName: TextView = findViewById(R.id.tv_name)
 //        val tvPrice: TextView = findViewById(R.id.tv_price)
