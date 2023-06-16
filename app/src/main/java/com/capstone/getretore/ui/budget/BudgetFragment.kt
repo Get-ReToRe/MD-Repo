@@ -41,6 +41,7 @@ class BudgetFragment : Fragment() {
     private var param2: String? = null
     private var _binding: FragmentBudgetBinding? = null
     private lateinit var adapter: BudgetPredictAdapter
+    private var isLoading = false
     private var budget: Int = 0
     private var category: String = ""
     private var lat: Double = -7.7829
@@ -83,6 +84,8 @@ class BudgetFragment : Fragment() {
     }
 
     private fun getRecommendation(){
+        isLoading = true
+        loadingHandler(true)
         var inputBudget = binding.etBudget.text.toString();
         var inputCategory = binding.spinnerCategory.selectedItem.toString();
         if(inputBudget == ""){
@@ -111,6 +114,7 @@ class BudgetFragment : Fragment() {
                         Log.d("response", "result ${data}" )
                         setDataToAdapter(data!!)
                     }
+                    binding.loadingLayout.root.visibility = View.GONE
                 }
 
                 override fun onFailure(call: Call<ArrayList<BudgetPredictData>>, t: Throwable) {
@@ -121,6 +125,20 @@ class BudgetFragment : Fragment() {
             })
         }
 
+    }
+
+    private fun loadingHandler(isLoading: Boolean) {
+        if (isLoading && this.isLoading) {
+            binding.loadingLayout.root.visibility = View.VISIBLE
+        } else {
+            binding.loadingLayout.root.visibility = View.GONE
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        loadingHandler(false)
+        _binding = null
     }
 
     companion object {
