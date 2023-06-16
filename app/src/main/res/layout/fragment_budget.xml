@@ -62,4 +62,10 @@
 
     </RelativeLayout>
 
+    <include
+        android:id="@+id/loadingLayout"
+        layout="@layout/loading_layout"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
 </FrameLayout>
