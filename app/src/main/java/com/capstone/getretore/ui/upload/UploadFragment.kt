@@ -37,6 +37,7 @@ class UploadFragment : Fragment() {
     private var getFile: File? = null
     private var _binding: FragmentUploadBinding? = null
     private lateinit var adapter: PlaceAdapter
+    private var isLoading = false
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -67,6 +68,8 @@ class UploadFragment : Fragment() {
     }
 
     private fun uploadImage(){
+        isLoading = true
+        loadingHandler(true)
         if(getFile!=null){
             val file = reduceFileImage(getFile as File)
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
@@ -87,6 +90,7 @@ class UploadFragment : Fragment() {
                         setDataToAdapter(data!!)
                         binding.tvHasil.visibility = View.VISIBLE
                     }
+                    binding.loadingLayout.root.visibility = View.GONE
                 }
 
                 override fun onFailure(call: Call<ArrayList<PlaceData>>, t: Throwable) {
@@ -139,5 +143,17 @@ class UploadFragment : Fragment() {
         }
     }
 
+    private fun loadingHandler(isLoading: Boolean) {
+        if (isLoading && this.isLoading) {
+            binding.loadingLayout.root.visibility = View.VISIBLE
+        } else {
+            binding.loadingLayout.root.visibility = View.GONE
+        }
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        loadingHandler(false)
+        _binding = null
+    }
 }
