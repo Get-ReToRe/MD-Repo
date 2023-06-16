@@ -51,6 +51,8 @@ class UploadFragment : Fragment() {
         adapter = PlaceAdapter(requireContext(), arrayListOf())
         binding.rvPredict.adapter = adapter
 
+        binding.tvHasil.visibility = View.GONE
+
         binding.btnGallery.setOnClickListener { startGallery() }
         binding.btnPredict.setOnClickListener { uploadImage() }
 
@@ -83,6 +85,7 @@ class UploadFragment : Fragment() {
                         val data = response.body()
                         Log.d("response", "response ${data}")
                         setDataToAdapter(data!!)
+                        binding.tvHasil.visibility = View.VISIBLE
                     }
                 }
 

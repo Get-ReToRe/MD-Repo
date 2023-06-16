@@ -28,11 +28,20 @@
     <string name="title_budget">Budget</string>
     <string name="title_upload">Upload</string>
 
-    <string name="gallery">Galeri</string>
-    <string name="predict">Prediksi</string>
+    <string name="gallery">Gallery</string>
+    <string name="predict">Predict</string>
+    <string name="input_image">Tambahkan gambar terlebih dulu!</string>
+
+    <string name="input_budget">Input Budget Kamu!</string>
+    <string name="input_city">Kota</string>
+    <string name="budget_message">Rekomendasi Tempat Wisata dan Rekreasi Sesuai Budget Kamu !</string>
 
     <string name="input">Tuliskan dana Anda</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="wellcome">Wellcome</string>
+    <string name="hasil">This, recommendation for you</string>
+    <string name="city">Nama Kota</string>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="category_wisata">

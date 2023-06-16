@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
         binding.rvMain.setHasFixedSize(true)
 
         var auth = Firebase.auth
-        binding.tvSelamatDatang.setText("Selamat Datang, " + auth.currentUser!!.displayName.toString() )
+        binding.tvSelamatDatang.setText("Wellcome, " + auth.currentUser!!.displayName.toString() )
 
         remoteGetPlace()
 
