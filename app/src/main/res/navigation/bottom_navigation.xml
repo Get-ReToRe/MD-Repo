@@ -18,15 +18,17 @@
         tools:layout="@layout/fragment_budget" />
 
     <fragment
-        android:id="@+id/navigation_package"
-        android:name="com.capstone.getretore.ui.budget.BudgetFragment"
-        android:label="@string/title_package"
-        tools:layout="@layout/fragment_package" />
-
-    <fragment
         android:id="@+id/navigation_upload"
         android:name="com.capstone.getretore.ui.upload.UploadFragment"
         android:label="@string/title_upload"
         tools:layout="@layout/fragment_upload" />
+
+    <fragment
+        android:id="@+id/navigation_package"
+        android:name="com.capstone.getretore.ui.package.PackageFragment"
+        android:label="@string/title_profil"
+        tools:layout="@layout/fragment_package" />
+
+
 
 </navigation>

@@ -15,7 +15,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/wellcome" />
+        android:text="@string/welcome" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main"
